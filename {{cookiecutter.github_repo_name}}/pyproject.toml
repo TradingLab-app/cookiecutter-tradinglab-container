@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "{{ cookiecutter.github_repo_name }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.full_name.replace('\"', '\\\"') }} <{{ cookiecutter.email }}>"]
+license = "{{ cookiecutter.open_source_license }}"
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: {{ cookiecutter.open_source_license }}",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+cookiecutter = "^2.6.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+bump-my-version = "^0.21.0"
+black = "^24.4.2"
+flake8 = "^7.0.0"
+pytest-runner = "^6.0.1"
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[tool.bumpversion]
+current_version = "{{ cookiecutter.version }}"
+commit = true
+tag = true
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "{{ cookiecutter.project_slug }}/__init__.py"
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+
+{% if cookiecutter.use_pytest == 'y' -%}
+[pytest]
+testpaths = tests
+addopts = -ra -q
+{%- endif %}
+
+[tool.flake8]
+exclude = [
+    "docs",
+]
+max-line-length = 88
+
+[project.urls]
+Homepage = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.github_repo_name }}"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

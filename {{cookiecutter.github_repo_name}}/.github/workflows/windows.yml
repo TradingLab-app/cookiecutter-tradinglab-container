@@ -1,0 +1,42 @@
+on:
+    push:
+        branches:
+            - main
+            - master
+    pull_request:
+        branches:
+            - main
+            - master
+
+{% raw %}
+
+name: Windows build
+jobs:
+    test-windows:
+        name: Build for Windows (${{ matrix.python-version }}, ${{ matrix.os }})
+        runs-on: windows-latest
+        strategy:
+            matrix:
+                python-version: [ "{{cookiecutter.python_version}}" ]
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ matrix.python-version }}
+
+            - name: Install Poetry
+              run: |
+                  pip install poetry
+
+            - name: Configure Poetry
+              run: |
+                  poetry config virtualenvs.create false  
+
+            - name: Install dependencies
+              run: poetry install
+              shell: bash
+{% endraw %}
