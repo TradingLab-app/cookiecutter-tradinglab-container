@@ -17,11 +17,21 @@
 
 ## Usage
 
-This guide provides detailed steps on how to create a Python package, configure it for distribution, and manage its versioning and releases. First, install `cookiecutter` and `bump-my-version` and then follow the steps below.
+This guide provides detailed steps on how to create a Python package where you can write your own trading strategy, configure it for docker containerization, and manage its versioning and releases. First, install `cookiecutter`, `bump-my-version` and `poetry` and then follow the steps below.
 
 ```bash
 pip install cookiecutter bump-my-version poetry
 ```
+
+### _- dependency management_
+
+We'll use poetry as the main dependency management and packaging tool. To add an open-source library, instead of using `pip install`, it can be easily done by:
+
+```shell
+poetry add requests
+```
+
+For more information about how to use poetry, please visit [Python-Poetry.org](https://python-poetry.org/docs/).
 
 ### 1. Create the Package Structure
 

@@ -42,12 +42,6 @@ filename = "{{ cookiecutter.project_slug }}/__init__.py"
 search = '__version__ = "{current_version}"'
 replace = '__version__ = "{new_version}"'
 
-{% if cookiecutter.use_pytest == 'y' -%}
-[pytest]
-testpaths = tests
-addopts = -ra -q
-{%- endif %}
-
 [tool.flake8]
 exclude = [
     "docs",
