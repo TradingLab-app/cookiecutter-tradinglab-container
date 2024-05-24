@@ -120,13 +120,13 @@ git push origin [main/master]
 
 Add your GCP credentials as secrets in your GitHub repository in order to push your docker container to the Artifact Registry:
 
-- **GCP_CREDENTIALS**: the service account key in json <sup>[1]</sup>
-- **GCP_REGION**: the GCP region to host the repository <sup>[2]</sup>
-- **GAR_REPO_NAME**: the repository name in which to store the docker image <sup>[3]</sup>
+- **`GCP_CREDENTIALS`**: the service account key in json <sup>[1]</sup>
+- **`GCP_REGION`**: the GCP region to host the repository <sup>[2]</sup>
+- **`GAR_REPO_NAME`**: the repository name in which to store the docker image <sup>[3]</sup>
 
-[1] Make sure that you grant artifact registry permission to this service account.\
-[2] You may refer to the [Regions](https://cloud.google.com/compute/docs/regions-zones#available) listed in the GCP documentation; you may disregard the zone suffix but only the zonal information (e.g. `asia-east1`).\
-[3] It is strongly suggested to follow the naming convention of `[username]-[project_slug]-strategy-repo`
+<span style="font-size:0.7em;">[1] Make sure that you grant artifact registry permission to this service account.</span>\
+<span style="font-size:0.7em;">[2] You may refer to the [Regions](https://cloud.google.com/compute/docs/regions-zones#available) listed in the GCP documentation; you may disregard the zone suffix but only the zonal information (e.g. `asia-east1`).</span>\
+<span style="font-size:0.7em;">[3] It is strongly suggested to follow the naming convention of `[username]-[project_slug]-strategy-repo`</span>
 
 ### 10. Make a New Release on GitHub
 
